@@ -16,6 +16,7 @@ import {
   Renderer2,
   ViewChild,
   ViewChildren,
+  numberAttribute
 } from '@angular/core';
 
 import {
@@ -90,8 +91,8 @@ export class PickerComponent implements OnInit, OnDestroy {
   @Input() skin: Emoji['skin'] = 1;
   /** Renders the native unicode emoji */
   @Input() isNative: Emoji['isNative'] = false;
-  @Input() emojiSize: Emoji['size'] = 24;
-  @Input() sheetSize: Emoji['sheetSize'] = 64;
+  @Input({ transform: numberAttribute }) emojiSize: Emoji['size'] = 24;
+  @Input({ transform: numberAttribute }) sheetSize: Emoji['sheetSize'] = 64;
   @Input() emojisToShowFilter?: (x: string) => boolean;
   @Input() showPreview = true;
   @Input() emojiTooltip = false;
@@ -109,7 +110,7 @@ export class PickerComponent implements OnInit, OnDestroy {
   @Input() enableSearch = true;
   @Input() showSingleCategory = false;
   @Input() virtualize = false;
-  @Input() virtualizeOffset = 0;
+  @Input({ transform: numberAttribute }) virtualizeOffset = 0;
   @Input() recent?: string[];
   @Output() emojiClick = new EventEmitter<any>();
   @Output() emojiSelect = new EventEmitter<any>();
